@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Getter from "./Getter";
+import KeyValue from "./KeyValue";
+import useHash from "./useHash";
 
 function App() {
+  const { enc, dec } = useHash()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Encrypter</h1>
+
+      <div>
+        <KeyValue onSave={enc} />
+        <hr />
+        <Getter onGet={dec} />
+      </div>
     </div>
   );
 }
