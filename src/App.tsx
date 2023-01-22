@@ -1,9 +1,10 @@
 import Getter from "./Getter";
 import KeyValue from "./KeyValue";
-import useHash from "./useHash";
+import useHash from "./lib/useHash";
 
 function App() {
-  const { enc, dec } = useHash()
+  const { enc, dec } = useHash('teste-hash_')
+  const { enc: encD, dec: decD } = useHash()
 
   return (
     <div className="App">
@@ -13,6 +14,14 @@ function App() {
         <KeyValue onSave={enc} />
         <hr />
         <Getter onGet={dec} />
+      </div>
+
+      <hr />
+
+      <div>
+        <KeyValue onSave={encD} />
+        <hr />
+        <Getter onGet={decD} />
       </div>
     </div>
   );
