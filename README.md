@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# Enc-Dec
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Usage
 
-## Available Scripts
+Enc-Dec is a simple library to hide values in localStorage easily.
 
-In the project directory, you can run:
+You can have one or more instances in your application using namespaces to security hash.
 
-### `yarn start`
+```js
+import { useState } from 'react'
+import { useHash } from '@filipigustavo/enc-dec'
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+// a simple component to interact with enc/dec methods
+function Values({ enc, dec }) {
+  const [raw, setRaw] = useState('')
+  const [value, setValue] = useState('value')
+  
+  const handleEnc = () => enc('local-storage-key', raw)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  const handleDec = () => {
+    const val = dec('local-storage-key')
+    setValue(val)
+  }
 
-### `yarn test`
+  return (
+    <div>
+      <input value={raw} onChange={(ev) => setRaw(ev.target.value)} />
+      <button onClick={handleEnc}>Enc</button>
+      <button onClick={handleDec}>Dec</button>
+      <br />
+      Value: {value}
+    </div>
+  )
+}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+function App() {
+  // here you have the default hash
+  const { enc, dec } = useHash()
+  // here you have a namespaced hash
+  const { enc: enc2, dec: dec2 } = useHash('other-namespace')
 
-### `yarn build`
+  return (
+    <div>
+      <h1>Default</h1>
+      <Values enc={enc} dec={dec} />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+      <hr />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+      <h1>Other namespace</h1>
+      <Values enc={enc2} dec={dec2} />
+    </div>
+  )
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+export default App
+```
