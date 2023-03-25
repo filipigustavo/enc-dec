@@ -1,12 +1,18 @@
 {
   "name": "@filipigustavo/enc-dec",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/filipigustavo/enc-dec"
   },
   "homepage": "https://github.com/filipigustavo/enc-dec",
-  "keywords": ["react", "encrypt", "decrypt", "hash", "hook"],
+  "keywords": [
+    "react",
+    "encrypt",
+    "decrypt",
+    "hash",
+    "hook"
+  ],
   "license": "MIT",
   "author": {
     "name": "Filipi Gustavo Boltão Silva",
