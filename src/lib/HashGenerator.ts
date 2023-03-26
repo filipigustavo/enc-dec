@@ -1,6 +1,8 @@
 import { v4 as uuidv4 } from 'uuid'
-import * as CryptoJS from 'crypto-js'
-import { faker } from '@faker-js/faker'
+import MD5 from 'crypto-js/md5'
+import AES from 'crypto-js/aes'
+import Utf8 from 'crypto-js/enc-utf8'
+import { faker } from '@faker-js/faker/locale/pt_BR'
 
 import AbstractGenerator from './AbstractGenerator'
 
@@ -15,7 +17,7 @@ class HashGenerator implements AbstractGenerator {
     initialHash
       .split('-')
       .forEach((item: string, index: number) => {
-        hashs[keys[index]] = CryptoJS.MD5(item).toString()
+        hashs[keys[index]] = MD5(item).toString()
       })
 
     localStorage.setItem(this.security, JSON.stringify(hashs))
@@ -34,14 +36,14 @@ class HashGenerator implements AbstractGenerator {
   }
 
   handleEncrypt: THandleEncrypt = (key, value, passPhrase) => {
-    const encrypted = CryptoJS.AES.encrypt(value, passPhrase).toString()
+    const encrypted = AES.encrypt(value, passPhrase).toString()
 
     localStorage.setItem(key, encrypted)
   }
 
   handleDecrypt: THandleDecrypt = (key, passPhrase) => {
     const encrypted = localStorage.getItem(key) || ''
-    const decrypted = CryptoJS.AES.decrypt(encrypted, passPhrase).toString(CryptoJS.enc.Utf8)
+    const decrypted = AES.decrypt(encrypted, passPhrase).toString(Utf8)
     
     return decrypted
   }
