@@ -1,5 +1,5 @@
 type THashKeys = {
-    [key: string]: string
+  [key: string]: string
 }
 
 type TEnc = (key: string, value: string) => void
@@ -13,9 +13,9 @@ interface TUseHashResult {
 
 type TUseHash = (prefix?: string, Generator?: AbstractGenerator) => TUseHashResult
 
-type TGenerateHashParts = () => THashKeys
+type TGenerateHashParts<H> = () => H
 
-type THandleHash = (localhashs?: THashKeys | null) => string
+type THandleHash<H> = (localhashs: H) => string
 
 type THandleEncrypt = (key: string, value: any, passPhrase: string) => void
 

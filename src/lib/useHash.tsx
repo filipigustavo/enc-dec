@@ -15,7 +15,10 @@ const useHash: TUseHash = (prefix = '', Generator = HashGenerator) => {
 
       setSecKey(newKey)
     } else {
-      const newKey: string = HGen.handleHash()
+      const parsedHashs = HGen.generateHashParts()
+      const newKey: string = HGen.handleHash(parsedHashs)
+      
+      HGen.persistData(parsedHashs)
 
       setSecKey(newKey)
     }
