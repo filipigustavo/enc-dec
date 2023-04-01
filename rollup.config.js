@@ -24,9 +24,9 @@ const config = {
       mainFields: ['browser']
     }),
     commonjs(),
+    terser(),
     typescript({ useTsconfigDeclarationDir: true }),
-    postcss(),
-    terser()
+    postcss()
   ],
   external: ['react', 'react-dom']
 };
