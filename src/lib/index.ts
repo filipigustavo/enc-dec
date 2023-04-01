@@ -1,4 +1,4 @@
 import useHash from "./useHash";
-import HashGenerator from "./HashGenerator";
+import AbstractGenerator from "./AbstractGenerator";
 
-export { useHash, HashGenerator }
+export { useHash, AbstractGenerator }
