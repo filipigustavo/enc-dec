@@ -65,11 +65,11 @@ const { enc: enc2, dec: dec2 } = useHash('my_prefix-')
 
 To do it, you should make a class that extends `AbstractGenerator` with `generateHashParts` and `handleHash` methods.
 
-`AbstractGenerator` accepts a Generic type. `generateHashParts` should return the same type declare in the class and `handleHash` accepts a parameter with these type and always returns a `string`.
+`AbstractGenerator` accepts a Generic type. `generateHashParts` should return the same type declared in the class and `handleHash` accepts a parameter with these type and always returns a `string`.
 
 #### `AbstractGenerator<H>`
 
-This is the base class that works with hashs. You should extend it and implement `generateHashParts` and `handleHash` mehotds.
+This is the base class that works with hashs. You should extend it and implement `generateHashParts` and `handleHash` methods.
 
 #### `generateHashParts(): H`
 

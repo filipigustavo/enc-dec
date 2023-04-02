@@ -1,12 +1,14 @@
 import { v4 as uuidv4 } from 'uuid'
 import MD5 from 'crypto-js/md5'
-import { faker } from '@faker-js/faker/locale/pt_BR'
+import { LoremIpsum } from 'lorem-ipsum'
 
 import AbstractGenerator from './AbstractGenerator'
 
+const lorem = new LoremIpsum()
+
 class HashGenerator extends AbstractGenerator<THashKeys> {
   generateHashParts: TGenerateHashParts<THashKeys> = () => {
-    const keys: string[] = faker.lorem.words(5).split(' ')
+    const keys: string[] = lorem.generateWords(5).split(' ')
     const initialHash: string = uuidv4()
     const hashs: THashKeys = {}
     
