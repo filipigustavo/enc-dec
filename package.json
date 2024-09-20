@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/filipigustavo/enc-dec"
   },
-  "homepage": "https://github.com/filipigustavo/enc-dec",
+  "homepage": "https://filipigustavo.github.io/enc-dec",
   "keywords": [
     "react",
     "encrypt",
@@ -25,7 +25,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pack": "rm -rf build/ && rollup -c"
+    "pack": "rm -rf build/ && rollup -c",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -60,6 +62,7 @@
     "@types/react-dom": "^18.0.0",
     "@types/uuid": "^8.3.4",
     "crypto-js": "^4.1.1",
+    "gh-pages": "^6.1.1",
     "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.8",
     "node-polyfill-webpack-plugin": "^2.0.1",
