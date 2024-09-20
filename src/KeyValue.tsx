@@ -30,6 +30,8 @@ const KeyValue = ({ onSave }: TProps) => {
   const handleSubmit = (event: any) => {
     event.preventDefault()
     onSave(form.key, form.value)
+    const newEvent = new CustomEvent("update-localstorage")
+    globalThis.dispatchEvent(newEvent)
   }
 
   const handleChange = (event: any) => {
@@ -37,22 +39,29 @@ const KeyValue = ({ onSave }: TProps) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Salvar: {form.key} / {form.value}</h1>
-      <h3>Form: {JSON.stringify(form)}</h3>
+    <div className="card mb-3">
+      <div className="card-body">
+        <form className='row' onSubmit={handleSubmit}>
+          <div className='col-12 mb-3'>
+            <h4>Salvar dados no localStorage</h4>
+          </div>
 
-      <fieldset>
-        <label>Key</label>
-        <input name='key' value={form.key} onChange={handleChange} />
-      </fieldset>
+          <div className='col-12 mb-3'>
+            <label className='form-label'>Chave</label>
+            <input required placeholder='Ex.: chave-local' className='form-control' name='key' value={form.key} onChange={handleChange} />
+          </div>
 
-      <fieldset>
-        <label>Value</label>
-        <input name='value' value={form.value} onChange={handleChange} />
-      </fieldset>
+          <div className='col-12 mb-3'>
+            <label className='form-label'>Valor</label>
+            <input required placeholder='Ex.: um valor qualquer' className='form-control' name='value' value={form.value} onChange={handleChange} />
+          </div>
 
-      <button type="submit">Salvar</button>
-    </form>
+          <div className='col-12'>
+            <button className='btn btn-primary' type="submit">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
   )
 }
 
