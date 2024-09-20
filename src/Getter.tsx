@@ -18,16 +18,16 @@ const Getter = ({ onGet }: TProps) => {
       <div className="card-body">
         <form className="row" onSubmit={handleSubmit}>
           <div className="col-12 mb-3">
-            <h4>Recuperar dados do localStorage</h4>
+            <h4>Get data from localStorage</h4>
           </div>
 
           <div className="col-12 mb-3">
-            <label className="form-label">Chave (a mesma utilizada para salvar o dado)</label>
-            <input required placeholder='Ex.: chave-local' className="form-control" onChange={(event) => setKey(event.target.value)} />
+            <label className="form-label">Key (same one used to save data)</label>
+            <input required placeholder='Ex.: local-key' className="form-control" onChange={(event) => setKey(event.target.value)} />
           </div>
 
           <div className="col-12">
-            <button className="btn btn-primary" type="submit">Recuperar</button>
+            <button className="btn btn-primary" type="submit">Get</button>
           </div>
         </form>
       </div>

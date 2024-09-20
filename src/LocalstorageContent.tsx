@@ -28,7 +28,7 @@ const LocalstorageContent = () => {
 
   return <div className="card">
     <div className="card-body">
-      <h5 className="card-title">Conteúdo do localStorage</h5>
+      <h5 className="card-title">localStorage content</h5>
       <pre>{local}</pre>
     </div>
   </div>

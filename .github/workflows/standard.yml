@@ -3,25 +3,20 @@ name: CI
 on:
   push:
     branches: [ "master" ]
-
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
       - name: Set Github user
         run: |
           git config --global user.email "email@filipigustavo.com.br"
           git config --global user.name "Filipi Gustavo"
-
       - name: Install dependencies
         run: |
           npm ci
-
       - name: Deploy with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git

@@ -17,8 +17,8 @@ function App() {
       <div className="row">
         <div className="col">
           <h1>Enc-dec</h1>
-          <p>Uma forma fácil de gravar dados criptografados no localStorage.</p>
-          <p>Ver a documentação <a href="https://www.npmjs.com/package/@filipigustavo/enc-dec" target="_blank" rel="noreferrer">aqui</a></p>
+          <p>A simple library to hide values in localStorage easily.</p>
+          <p>See documentation <a href="https://www.npmjs.com/package/@filipigustavo/enc-dec" target="_blank" rel="noreferrer">here</a></p>
         </div>
       </div>
 
@@ -28,8 +28,8 @@ function App() {
         <div className="col-6">
           <NavTabs value={activeTab} onChange={handleSetActiveTab} />
 
-          <FormHash title="Padrão" description="useHash() sem um prefixo definido" tabName="default" activeTab={activeTab} />
-          <FormHash title="Prefixado" description="useHash() com um prefixo definido (teste-hash_)" tabName="prefixed" activeTab={activeTab} prefix="teste-hash_" />
+          <FormHash title="Default" description="useHash() without a defined prefix" tabName="default" activeTab={activeTab} />
+          <FormHash title="Prefixed" description="useHash() with a defined prefix: teste-hash_" tabName="prefixed" activeTab={activeTab} prefix="teste-hash_" />
         </div>
 
         <div className="col-6">

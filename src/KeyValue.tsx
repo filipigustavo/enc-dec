@@ -43,21 +43,21 @@ const KeyValue = ({ onSave }: TProps) => {
       <div className="card-body">
         <form className='row' onSubmit={handleSubmit}>
           <div className='col-12 mb-3'>
-            <h4>Salvar dados no localStorage</h4>
+            <h4>Save data on localStorage</h4>
           </div>
 
           <div className='col-12 mb-3'>
-            <label className='form-label'>Chave</label>
-            <input required placeholder='Ex.: chave-local' className='form-control' name='key' value={form.key} onChange={handleChange} />
+            <label className='form-label'>Key</label>
+            <input required placeholder='Ex.: local-key' className='form-control' name='key' value={form.key} onChange={handleChange} />
           </div>
 
           <div className='col-12 mb-3'>
-            <label className='form-label'>Valor</label>
-            <input required placeholder='Ex.: um valor qualquer' className='form-control' name='value' value={form.value} onChange={handleChange} />
+            <label className='form-label'>Value</label>
+            <input required placeholder='Ex.: any value' className='form-control' name='value' value={form.value} onChange={handleChange} />
           </div>
 
           <div className='col-12'>
-            <button className='btn btn-primary' type="submit">Salvar</button>
+            <button className='btn btn-primary' type="submit">Save</button>
           </div>
         </form>
       </div>
