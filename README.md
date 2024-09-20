@@ -2,6 +2,8 @@
 
 A simple library to hide values in localStorage easily.
 
+See this lib in action [here](https://filipigustavo.github.io/enc-dec/)
+
 ## Usage
 
 The `useHash` hook returns `enc` and `dec` methods. Use it to save encrypted data and get it from localStorage.
@@ -94,4 +96,10 @@ class NewHash extends AbstractGenerator<string> {
     return hash
   };
 }
+```
+
+Now you can use your new hash class as a second parameter in useHash hook:
+
+```ts
+const { enc, dec } = useHash('', NewHash)
 ```
