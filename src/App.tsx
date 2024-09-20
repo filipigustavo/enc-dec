@@ -18,7 +18,7 @@ function App() {
         <div className="col">
           <h1>Enc-dec</h1>
           <p>Uma forma fácil de gravar dados criptografados no localStorage.</p>
-          <p>Ver a documentação <a href="https://www.npmjs.com/package/@filipigustavo/enc-dec" target="_blank">aqui</a></p>
+          <p>Ver a documentação <a href="https://www.npmjs.com/package/@filipigustavo/enc-dec" target="_blank" rel="noreferrer">aqui</a></p>
         </div>
       </div>
 
