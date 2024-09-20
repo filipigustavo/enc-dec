@@ -10,20 +10,28 @@ const Getter = ({ onGet }: TProps) => {
   const handleSubmit = (event: any) => {
     event.preventDefault()
     const value = onGet(key)
-    console.log(`Decrypted: ${value}`)
+    globalThis.alert(`Decrypted: ${value}`)
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Resgatar: {key}</h1>
+    <div className="card mb-3">
+      <div className="card-body">
+        <form className="row" onSubmit={handleSubmit}>
+          <div className="col-12 mb-3">
+            <h4>Recuperar dados do localStorage</h4>
+          </div>
 
-      <fieldset>
-        <label>Key</label>
-        <input onChange={(event) => setKey(event.target.value)} />
-      </fieldset>
+          <div className="col-12 mb-3">
+            <label className="form-label">Chave (a mesma utilizada para salvar o dado)</label>
+            <input required placeholder='Ex.: chave-local' className="form-control" onChange={(event) => setKey(event.target.value)} />
+          </div>
 
-      <button type="submit">Resgatar</button>
-    </form>
+          <div className="col-12">
+            <button className="btn btn-primary" type="submit">Recuperar</button>
+          </div>
+        </form>
+      </div>
+    </div>
   )
 }
 
