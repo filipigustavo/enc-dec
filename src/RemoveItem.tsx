@@ -36,12 +36,12 @@ const RemoveItem = ({ index, onRemove }: TProps) => {
     }
   }, [])
 
-  return !indexData.length ? <></> : <div className="card mb-3">
+  return <div className="card mb-3">
     <div className="card-body">
       <div className="row">
         <div className="col-12">
         <h4>Remove data from localStorage</h4>
-          {indexData.map((item, index) => (
+          {!indexData.length ? <p>Save some keys</p> : indexData.map((item, index) => (
             <button key={index} type="button" className="btn btn-danger me-1" onClick={handleRemove(item)}>{item}</button>
           ))}
         </div>

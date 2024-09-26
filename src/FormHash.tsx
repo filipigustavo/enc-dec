@@ -1,3 +1,4 @@
+import ClearAll from "./ClearAll"
 import Getter from "./Getter"
 import KeyValue from "./KeyValue"
 import RemoveItem from "./RemoveItem"
@@ -13,7 +14,7 @@ type TProps = {
 }
 
 const FormHash = ({ title, description, activeTab, tabName, prefix = "" }: TProps) => {
-  const { index, enc, dec, remove, renew } = useHash({prefix})
+  const { index, enc, dec, remove, renew, clear } = useHash({prefix})
 
   return <div className={`tabbed ${tabName === activeTab ? 'd-block' : 'd-none'}`}>
     <h2>{title}</h2>
@@ -22,6 +23,7 @@ const FormHash = ({ title, description, activeTab, tabName, prefix = "" }: TProp
     <Getter onGet={dec} />
     <RemoveItem {...{index}} onRemove={remove} />
     <RenewHash onRenew={renew} />
+    <ClearAll onClear={clear} />
 </div>
 }
 

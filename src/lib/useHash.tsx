@@ -72,14 +72,23 @@ const useHash: TUseHash = ({
       const decryptedValue = HGen.handleDecrypt(itemKey, currentKey)
 
       HGen.handleEncrypt(itemKey, decryptedValue, newKey)
-    })    
+    })
 
     HGen.persistData(newHashs)
 
     setSecKey(newKey)
   }
 
-  return { index, enc, dec, remove, renew }
+  const clear = () => {
+    const indexData: string[] = JSON.parse(globalThis.localStorage.getItem(index) || "[]")
+
+    indexData.forEach((key: string) => {
+      HGen.handleRemove(getKey({ globalPrefix, prefix, key }))
+      HGen.handleRemoveKeyFromIndex(index, key)
+    })
+  }
+
+  return { index, enc, dec, remove, renew, clear }
 }
 
 export default useHash

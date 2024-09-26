@@ -10,12 +10,15 @@ type TRemove = (key: string) => void
 
 type TRenew = () => void
 
+type TClear = () => void
+
 interface TUseHashResult {
   index: string
   enc: TEnc
   dec: TDec
   remove: TRemove
   renew: TRenew
+  clear: TClear
 }
 
 type TUseHash = (params: { globalPrefix?: string, prefix?: string, Generator?: AbstractGenerator, notAllowedKeyCallback?: Function }) => TUseHashResult

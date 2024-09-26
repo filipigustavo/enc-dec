@@ -8,9 +8,10 @@ const RenewHash = ({ onRenew }: TProps) => {
     const updateEvent = new CustomEvent(EV)
 
     onRenew()
-    
+
     globalThis.dispatchEvent(updateEvent)
   }
+
   return <div className="card mb-3">
     <div className="card-body">
       <div className="row">
