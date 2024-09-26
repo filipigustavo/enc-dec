@@ -11,7 +11,7 @@ interface TUseHashResult {
   dec: TDec
 }
 
-type TUseHash = (params: { globalPrefix?: string, prefix?: string, Generator?: AbstractGenerator }) => TUseHashResult
+type TUseHash = (params: { globalPrefix?: string, prefix?: string, Generator?: AbstractGenerator, notAllowedKeyCallback?: Function }) => TUseHashResult
 
 type TGenerateHashParts<H> = () => H
 
