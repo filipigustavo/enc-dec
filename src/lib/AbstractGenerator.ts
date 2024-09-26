@@ -24,6 +24,10 @@ abstract class AbstractGenerator<H> {
     return decrypted
   }
 
+  handleRemove: THandleRemove = (key) => {
+    globalThis.localStorage.removeItem(key)
+  }
+
   handleSaveKeyIntoIndex: THandleSaveKeyIntoIndex = (index, key) => {
     const currentIndex: string = globalThis.localStorage.getItem(index) || ""
 
@@ -37,6 +41,20 @@ abstract class AbstractGenerator<H> {
 
     if (!hasKeyIntoIndex) {
       globalThis.localStorage.setItem(index, JSON.stringify([...parsedIndex, key]))
+    }
+  }
+
+  handleRemoveKeyFromIndex: THandleRemoveKeyFromIndex = (index, key) => {
+    const currentIndex: string = globalThis.localStorage.getItem(index) || ""
+
+    if (!currentIndex) return
+
+    const parsedIndex: string[] = JSON.parse(currentIndex)
+    const hasKeyIntoIndex = parsedIndex.includes(key)
+
+    if (!!hasKeyIntoIndex) {
+      const newIndex = parsedIndex.filter(item => item !== key)
+      globalThis.localStorage.setItem(index, JSON.stringify(newIndex))
     }
   }
 }

@@ -13,6 +13,7 @@ const useHash: TUseHash = ({
   const security: string = getKey({ globalPrefix, prefix, key:"security" })
   const HGen = useMemo(() => new Generator(security), [security, Generator])
   const localHashs: string | null = globalThis.localStorage.getItem(security)
+  const index: string = getKey({ globalPrefix, prefix, key: "index" })
   
   useEffect(() => {
     if (localHashs) {
@@ -49,7 +50,17 @@ const useHash: TUseHash = ({
     }
   }
 
-  return { enc, dec }
+  const remove: TRemove = (key) => {
+    try {
+      testKey(key)
+      HGen.handleRemove(getKey({ globalPrefix, prefix, key }))
+      HGen.handleRemoveKeyFromIndex(getKey({ globalPrefix, prefix, key: "index" }), key)
+    } catch (err) {
+      notAllowedKeyCallback(err)
+    }
+  }
+
+  return { index, enc, dec, remove }
 }
 
 export default useHash
