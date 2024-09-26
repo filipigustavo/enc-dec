@@ -11,7 +11,7 @@ type TProps = {
 }
 
 const FormHash = ({ title, description, activeTab, tabName, prefix = "" }: TProps) => {
-  const { enc, dec } = useHash(prefix)
+  const { enc, dec } = useHash({prefix})
 
   return <div className={`tabbed ${tabName === activeTab ? 'd-block' : 'd-none'}`}>
     <h2>{title}</h2>

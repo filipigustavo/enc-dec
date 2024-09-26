@@ -29,7 +29,7 @@ function App() {
           <NavTabs value={activeTab} onChange={handleSetActiveTab} />
 
           <FormHash title="Default" description="useHash() without a defined prefix" tabName="default" activeTab={activeTab} />
-          <FormHash title="Prefixed" description="useHash() with a defined prefix: teste-hash_" tabName="prefixed" activeTab={activeTab} prefix="teste-hash_" />
+          <FormHash title="Prefixed" description="useHash({ prefix: 'teste-prefix'}) with a defined prefix" tabName="prefixed" activeTab={activeTab} prefix="teste-prefix" />
         </div>
 
         <div className="col-6">
