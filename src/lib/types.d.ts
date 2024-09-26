@@ -8,11 +8,14 @@ type TDec = (key: string) => string
 
 type TRemove = (key: string) => void
 
+type TRenew = () => void
+
 interface TUseHashResult {
   index: string
   enc: TEnc
   dec: TDec
   remove: TRemove
+  renew: TRenew
 }
 
 type TUseHash = (params: { globalPrefix?: string, prefix?: string, Generator?: AbstractGenerator, notAllowedKeyCallback?: Function }) => TUseHashResult

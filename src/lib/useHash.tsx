@@ -35,7 +35,7 @@ const useHash: TUseHash = ({
     try {
       testKey(key)
       HGen.handleEncrypt(getKey({ globalPrefix, prefix, key }), value, secKey)
-      HGen.handleSaveKeyIntoIndex(getKey({ globalPrefix, prefix, key: "index" }), key)
+      HGen.handleSaveKeyIntoIndex(index, key)
     } catch(err) {
       notAllowedKeyCallback(err)
     }
@@ -54,13 +54,32 @@ const useHash: TUseHash = ({
     try {
       testKey(key)
       HGen.handleRemove(getKey({ globalPrefix, prefix, key }))
-      HGen.handleRemoveKeyFromIndex(getKey({ globalPrefix, prefix, key: "index" }), key)
+      HGen.handleRemoveKeyFromIndex(index, key)
     } catch (err) {
       notAllowedKeyCallback(err)
     }
   }
 
-  return { index, enc, dec, remove }
+  const renew: TRenew = () => {
+    const parsedCurrentHashs = JSON.parse(localHashs || "")
+    const currentKey = HGen.handleHash(parsedCurrentHashs)
+    const newHashs = HGen.generateHashParts()
+    const newKey: string = HGen.handleHash(newHashs)
+    const indexData: string[] = JSON.parse(globalThis.localStorage.getItem(index) || "[]")
+
+    indexData.forEach((key: string) => {
+      const itemKey = getKey({ globalPrefix, prefix, key })
+      const decryptedValue = HGen.handleDecrypt(itemKey, currentKey)
+
+      HGen.handleEncrypt(itemKey, decryptedValue, newKey)
+    })    
+
+    HGen.persistData(newHashs)
+
+    setSecKey(newKey)
+  }
+
+  return { index, enc, dec, remove, renew }
 }
 
 export default useHash
