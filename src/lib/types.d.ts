@@ -21,4 +21,6 @@ type THandleEncrypt = (key: string, value: any, passPhrase: string) => void
 
 type THandleDecrypt = (key: string, passPhrase: string) => string
 
+type THandleSaveKeyIntoIndex = (index: string, key: string) => void
+
 type TGetKey = (params:{ globalPrefix?: string, prefix?: string, key: string }) => string

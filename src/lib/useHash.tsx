@@ -3,11 +3,16 @@ import { useEffect, useMemo, useState } from 'react'
 import HashGenerator from './HashGenerator'
 import { getKey, testKey } from './helpers'
 
-const useHash: TUseHash = ({ globalPrefix = 'ed', prefix = '', Generator = HashGenerator, notAllowedKeyCallback = (err: Error) => globalThis.alert(err) }) => {
+const useHash: TUseHash = ({
+  globalPrefix = 'ed',
+  prefix = '',
+  Generator = HashGenerator,
+  notAllowedKeyCallback = (err: Error) => globalThis.alert(err)
+}) => {
   const [secKey, setSecKey] = useState<string>('')
   const security: string = getKey({ globalPrefix, prefix, key:"security" })
   const HGen = useMemo(() => new Generator(security), [security, Generator])
-  const localHashs: string | null = localStorage.getItem(security)
+  const localHashs: string | null = globalThis.localStorage.getItem(security)
   
   useEffect(() => {
     if (localHashs) {
@@ -29,6 +34,7 @@ const useHash: TUseHash = ({ globalPrefix = 'ed', prefix = '', Generator = HashG
     try {
       testKey(key)
       HGen.handleEncrypt(getKey({ globalPrefix, prefix, key }), value, secKey)
+      HGen.handleSaveKeyIntoIndex(getKey({ globalPrefix, prefix, key: "index" }), key)
     } catch(err) {
       notAllowedKeyCallback(err)
     }
