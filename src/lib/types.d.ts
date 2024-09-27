@@ -21,7 +21,14 @@ interface TUseHashResult {
   clear: TClear
 }
 
-type TUseHash = (params: { globalPrefix?: string, prefix?: string, Generator?: AbstractGenerator, notAllowedKeyCallback?: Function }) => TUseHashResult
+type TUseHashParams = {
+  globalPrefix?: string,
+  prefix?: string,
+  Generator?: AbstractGenerator,
+  notAllowedKeyCallback?: Function
+}
+
+type TUseHash = (params: TUseHashParams) => TUseHashResult
 
 type TGenerateHashParts<H> = () => H
 
