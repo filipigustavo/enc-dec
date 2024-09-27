@@ -34,7 +34,7 @@ const RemoveItem = ({ index, onRemove }: TProps) => {
     return () => {
       globalThis.removeEventListener(EV, handleChangeLocalstorage)
     }
-  }, [])
+  }, [index])
 
   return <div className="card mb-3">
     <div className="card-body">
