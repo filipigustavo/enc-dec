@@ -47,7 +47,7 @@ function App() {
             title="Advanced"
             description={<>
               <FormDescription description="const { index, enc, dec, remove, renew, clear } = useHash({globalPrefix: 'advanced', prefix: 'hashed', Generator: NewGenerator, notAllowedKeyCallback: (err: Error) => console.error(err)})" />
-              <FormDescription description="NewConfiguration class is a custom way to do your own hash!" />
+              <FormDescription description="NewGenerator class is a custom way to do your own hash!" />
             </>}
             tabName="advanced"
             activeTab={activeTab}
