@@ -5,7 +5,7 @@ abstract class AbstractGenerator<H> {
   constructor(public security: string) {}
 
   persistData = (hashs: THashKeys) => {
-    localStorage.setItem(this.security, JSON.stringify(hashs))
+    globalThis.localStorage.setItem(this.security, JSON.stringify(hashs))
   }
 
   abstract generateHashParts: TGenerateHashParts<H>
@@ -14,14 +14,48 @@ abstract class AbstractGenerator<H> {
   handleEncrypt: THandleEncrypt = (key, value, passPhrase) => {
     const encrypted = AES.encrypt(value, passPhrase).toString()
 
-    localStorage.setItem(key, encrypted)
+    globalThis.localStorage.setItem(key, encrypted)
   }
 
   handleDecrypt: THandleDecrypt = (key, passPhrase) => {
-    const encrypted = localStorage.getItem(key) || ''
+    const encrypted = globalThis.localStorage.getItem(key) || ''
     const decrypted = AES.decrypt(encrypted, passPhrase).toString(Utf8)
 
     return decrypted
+  }
+
+  handleRemove: THandleRemove = (key) => {
+    globalThis.localStorage.removeItem(key)
+  }
+
+  handleSaveKeyIntoIndex: THandleSaveKeyIntoIndex = (index, key) => {
+    const currentIndex: string = globalThis.localStorage.getItem(index) || ""
+
+    if (!currentIndex) {
+      globalThis.localStorage.setItem(index, JSON.stringify([key]))
+      return
+    }
+
+    const parsedIndex: string[] = JSON.parse(currentIndex)
+    const hasKeyIntoIndex = parsedIndex.includes(key)
+
+    if (!hasKeyIntoIndex) {
+      globalThis.localStorage.setItem(index, JSON.stringify([...parsedIndex, key]))
+    }
+  }
+
+  handleRemoveKeyFromIndex: THandleRemoveKeyFromIndex = (index, key) => {
+    const currentIndex: string = globalThis.localStorage.getItem(index) || ""
+
+    if (!currentIndex) return
+
+    const parsedIndex: string[] = JSON.parse(currentIndex)
+    const hasKeyIntoIndex = parsedIndex.includes(key)
+
+    if (!!hasKeyIntoIndex) {
+      const newIndex = parsedIndex.filter(item => item !== key)
+      globalThis.localStorage.setItem(index, JSON.stringify(newIndex))
+    }
   }
 }
 

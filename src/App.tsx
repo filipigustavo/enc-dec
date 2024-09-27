@@ -3,6 +3,8 @@ import { useState } from "react";
 import FormHash from "./FormHash";
 import NavTabs from "./NavTabs";
 import LocalstorageContent from "./LocalstorageContent";
+import NewGenerator from "./NewGenerator";
+import FormDescription from "./FormDescription";
 
 function App() {
   const [activeTab, setActiveTab] = useState<string>("default")
@@ -25,14 +27,40 @@ function App() {
       <hr />
       
       <div className="row">
-        <div className="col-6">
+        <div className="col-12 col-lg-6">
           <NavTabs value={activeTab} onChange={handleSetActiveTab} />
 
-          <FormHash title="Default" description="useHash() without a defined prefix" tabName="default" activeTab={activeTab} />
-          <FormHash title="Prefixed" description="useHash() with a defined prefix: teste-hash_" tabName="prefixed" activeTab={activeTab} prefix="teste-hash_" />
+          <FormHash
+            title="Default"
+            description={<FormDescription description="const { index, enc, dec, remove, renew, clear } = useHash()" />}
+            tabName="default"
+            activeTab={activeTab}
+          />
+          <FormHash
+            title="Prefixed"
+            description={<FormDescription description="const { index, enc, dec, remove, renew, clear } = useHash({ prefix: 'teste-prefix' })" />}
+            tabName="prefixed"
+            activeTab={activeTab}
+            hashConfig={{ prefix: "teste-prefix" }}
+          />
+          <FormHash
+            title="Advanced"
+            description={<>
+              <FormDescription description="const { index, enc, dec, remove, renew, clear } = useHash({globalPrefix: 'advanced', prefix: 'hashed', Generator: NewGenerator, notAllowedKeyCallback: (err: Error) => console.error(err)})" />
+              <FormDescription description="NewConfiguration class is a custom way to do your own hash!" />
+            </>}
+            tabName="advanced"
+            activeTab={activeTab}
+            hashConfig={{
+              globalPrefix: "advanced",
+              prefix: "hashed",
+              Generator: NewGenerator,
+              notAllowedKeyCallback: (err: Error) => console.error(err)
+            }}
+          />
         </div>
 
-        <div className="col-6">
+        <div className="col-12 col-lg-6">
           <LocalstorageContent />
         </div>
       </div>

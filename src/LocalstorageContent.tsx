@@ -4,7 +4,7 @@ const getLocalData = () => {
   const local = {...globalThis.localStorage}
 
   Object.keys(local).filter(item => !!item).forEach(item => {
-    const regex = new RegExp(/security|getItem|setItem|clear|removeItem/gi)
+    const regex = new RegExp(/security|index|getItem|setItem|clear|removeItem/gi)
 
     if (regex.test(item)) delete local[item]
   })
