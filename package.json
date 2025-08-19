@@ -27,7 +27,7 @@
     "serve": "vite preview",
     "pack": "rm -rf build/ && rollup -c",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [
