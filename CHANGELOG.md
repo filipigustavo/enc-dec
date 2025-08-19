@@ -1,3 +1,8 @@
+## 2.0.0 (August 19, 2025) - Breaking Changes
+
+This release updates React (and peer dependencies) to version 19.
+All dependencies was updated.
+
 ## 1.0.0 (September 27, 2024) - Breaking Changes
 
 This release modifies how to use `useHash` hook.
