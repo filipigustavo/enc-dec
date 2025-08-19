@@ -1,6 +1,6 @@
 {
   "name": "@filipigustavo/enc-dec",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/filipigustavo/enc-dec.git"
@@ -78,8 +78,8 @@
     "web-vitals": "^5.1.0"
   },
   "peerDependencies": {
-    "react": "19.1.1",
-    "react-dom": "19.1.1"
+    "react": "^19.x",
+    "react-dom": "^19.x"
   },
   "main": "build/index.js",
   "module": "build/index.es.js",
