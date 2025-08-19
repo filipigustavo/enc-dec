@@ -18,9 +18,9 @@ function App() {
     <div className="App container py-5">
       <div className="row">
         <div className="col">
-          <h1>Enc-dec</h1>
+          <h1>React Enc-dec</h1>
           <p>A simple library to hide values in localStorage easily.</p>
-          <p>See documentation <a href="https://www.npmjs.com/package/@filipigustavo/enc-dec" target="_blank" rel="noreferrer">here</a></p>
+          <p>See documentation <a href="https://www.npmjs.com/package/@filipigustavo/react-enc-dec" target="_blank" rel="noreferrer">here</a></p>
         </div>
       </div>
 
