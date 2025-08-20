@@ -51,7 +51,7 @@ By default useHash use a function with `alert(err)`.
 
 It's used to encrypt data and save in localStorage. `enc('my-key', 'my-value')`
 
-In localStorage, the generated key is `[globalPrefix]\_[prefix]\_[key]`
+In localStorage, the generated key is `[globalPrefix]_[prefix]_[key]`
 
 #### `dec: (key: string) => string`
 
@@ -92,7 +92,7 @@ import { useState } from 'react'
 import { useHash } from '@filipigustavo/react-enc-dec'
 
 function App() {
-  const { enc, dec } = useHash()
+  const { enc, dec } = useHash({})
   const [raw, setRaw] = useState('')
   const [decrypted, setDecrypted] = useState('')
   
@@ -125,7 +125,7 @@ If you want another namespaced instance, just pass a `prefix` in configuration o
 
 ```js
 // default usage
-const { enc, dec } = useHash()
+const { enc, dec } = useHash({})
 // using with a namespace
 const { enc: enc2, dec: dec2 } = useHash({ prefix: 'my_prefix' })
 ```

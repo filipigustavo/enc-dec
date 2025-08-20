@@ -11,7 +11,7 @@ type TProps = {
   description: ReactNode,
   activeTab: string, 
   tabName: string, 
-  hashConfig?: TUseHashParams
+  hashConfig?: TUseHashParams<any>
 }
 
 const FormHash = ({ title, description, activeTab, tabName, hashConfig }: TProps) => {
