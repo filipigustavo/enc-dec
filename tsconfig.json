@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "outDir": "build",
+    "target": "ESNext",
     "lib": [
       "dom",
       "dom.iterable",
@@ -17,10 +18,14 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "noEmit": false,
+    "jsx": "react-jsx",
+    "declaration": true,
+    "declarationDir": "build/dts",
+    "emitDeclarationOnly": true
   },
   "include": [
     "src"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }
