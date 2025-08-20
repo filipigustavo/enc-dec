@@ -1,3 +1,4 @@
+import { TGenerateHashParts, THandleHash } from './lib'
 import AbstractGenerator from './lib/AbstractGenerator'
 
 class NewGenerator extends AbstractGenerator<string[]> {

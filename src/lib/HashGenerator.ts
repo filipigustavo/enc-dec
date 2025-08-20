@@ -3,6 +3,7 @@ import MD5 from 'crypto-js/md5'
 import { LoremIpsum } from 'lorem-ipsum'
 
 import AbstractGenerator from './AbstractGenerator'
+import { TGenerateHashParts, THandleHash, THashKeys } from './types'
 
 const lorem = new LoremIpsum()
 

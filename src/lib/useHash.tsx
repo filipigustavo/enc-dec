@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 
 import HashGenerator from './HashGenerator'
 import { getKey, testKey } from './helpers'
+import { TDec, TEnc, TRemove, TRenew, TUseHash } from './types'
+import AbstractGenerator from './AbstractGenerator'
 
 const useHash: TUseHash = ({
   globalPrefix = 'ed',
@@ -11,7 +13,7 @@ const useHash: TUseHash = ({
 }) => {
   const [secKey, setSecKey] = useState<string>('')
   const security: string = getKey({ globalPrefix, prefix, key:"security" })
-  const HGen = useMemo(() => new Generator(security), [security, Generator])
+  const HGen: AbstractGenerator<any> = useMemo(() => new Generator(security), [security, Generator])
   const localHashs: string | null = globalThis.localStorage.getItem(security)
   const index: string = getKey({ globalPrefix, prefix, key: "index" })
   
@@ -47,6 +49,7 @@ const useHash: TUseHash = ({
       return HGen.handleDecrypt(getKey({ globalPrefix, prefix, key }), secKey)
     } catch(err) {
       notAllowedKeyCallback(err)
+      return ""
     }
   }
 

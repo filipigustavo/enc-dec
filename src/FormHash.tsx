@@ -4,7 +4,7 @@ import Getter from "./Getter"
 import KeyValue from "./KeyValue"
 import RemoveItem from "./RemoveItem"
 import RenewHash from "./RenewHash"
-import { useHash } from "./lib"
+import { TUseHashParams, useHash } from "./lib"
 
 type TProps = {
   title: string, 

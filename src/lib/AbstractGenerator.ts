@@ -1,5 +1,6 @@
 import AES from 'crypto-js/aes'
 import Utf8 from 'crypto-js/enc-utf8'
+import { TGenerateHashParts, THandleDecrypt, THandleEncrypt, THandleHash, THandleRemove, THandleRemoveKeyFromIndex, THandleSaveKeyIntoIndex, THashKeys } from './types'
 
 abstract class AbstractGenerator<H> {
   constructor(public security: string) {}

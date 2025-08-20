@@ -1,3 +1,5 @@
+import { TGetKey } from "./types"
+
 const getKey: TGetKey = ({ globalPrefix, prefix, key }) => `${globalPrefix}_${prefix}_${key}`
 
 const testKey = (key: string): boolean => {
